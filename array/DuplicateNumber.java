@@ -46,6 +46,7 @@ public class DuplicateNumber {
 	//using hashTable
 	public static int duplicateNumberHash (int[] arr) {
 		int duplicate = 0;
+		int times = 0;
 		HashMap <Integer, Integer> hmap = new HashMap<>();
 		//put everything in a hashmap
 		for(int num : arr)
@@ -56,15 +57,17 @@ public class DuplicateNumber {
 		for(int count : hmap.keySet())
 		{
 			if (hmap.get(count) > 1) {
-				duplicate = count;	
+				duplicate = count;
+				times = hmap.get(count);
 			}
 		}
+		System.out.println ("The duplicate number was repeated " + times + " times");
 		return duplicate;
 	}
 		
 	public static void main(String[] args)
 	{
-		int[] arr = {1, 2, 3, 4, 5, 5, 6};
+		int[] arr = {1, 2, 3, 4, 5, 5, 6, 5, 5};
 		System.out.println("The duplicate number is (using Set): " + duplicateNumberSet(arr));
 		
 		System.out.println("The duplicate number is (using Hashmap): " + duplicateNumberHash(arr));
