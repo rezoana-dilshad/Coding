@@ -45,6 +45,8 @@ public class RemoveDuplicates {
 	public static void removeDuplicatesInPlaceUnsorted(int[] arr)
 	{
 		//sort the unsorted array
+		//Arrays.sort() uses Tim sort - O(N log N) for array of objects
+		//and QuickSort for arrays of primitives - again O(N log N).
 		Arrays.sort(arr);
 		
 		int j = 0;
