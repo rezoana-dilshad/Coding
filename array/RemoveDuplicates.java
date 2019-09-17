@@ -26,8 +26,6 @@ public class RemoveDuplicates {
 	//will only work if the array is Sorted
 	public static int removeDuplicatesInPlace(int[] arr)
 	{
-		if(arr.length == 0)
-			return 0;
 		int i = 0;
 		for(int j = 1; j < arr.length; j++)
 		{
@@ -37,9 +35,26 @@ public class RemoveDuplicates {
 				arr[i] = arr[j];
 			}
 		}
+	return i+1;
+	}
+	
+	//Sort first, then remove duplicates
+	public static void removeDuplicatesInPlaceUnsorted(int[] arr)
+	{
+		//sort the unsorted array
+		Arrays.sort(arr);
 		
-		//System.out.println(Arrays.toString(arr));
-		return i+1;
+		int j = 0;
+		for(int i = 0; i < arr.length-1; i++)
+		{
+			//if the value at i and i+1 are not same
+			if(arr[i] != arr[i+1]) 
+			{
+				arr[j++] = arr[i];
+			}
+		}
+		arr[j++] = arr[arr.length-1];
+		
 	}
 	
 	public static void main(String[] args)
@@ -49,6 +64,12 @@ public class RemoveDuplicates {
 		
 		int[] arr2 = {1, 1, 2, 3, 3, 5, 6, 6, 7};
 		System.out.println(removeDuplicatesInPlace(arr2));
+		removeDuplicatesInPlace(arr2);
+		System.out.println(Arrays.toString(arr2));
+		
+		int[] arr3 = {1, 1, 2, 3, 3, 5, 6, 6, 7};
+		removeDuplicatesInPlaceUnsorted(arr3);
+		System.out.println(Arrays.toString(arr3));
 	}
 
 }
