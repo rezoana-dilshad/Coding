@@ -9,6 +9,7 @@ import java.util.HashSet;
  *
  */
 public class RemoveDuplicates {
+	//O(n) and space O(n)
 	//Using a hashset
 	public static void removeDuplicates(int[] arr)
 	{
@@ -24,6 +25,7 @@ public class RemoveDuplicates {
 	
 	//in place, not using any other space, and return new length of array
 	//will only work if the array is Sorted
+	//O(N)
 	public static int removeDuplicatesInPlace(int[] arr)
 	{
 		int i = 0;
@@ -39,6 +41,7 @@ public class RemoveDuplicates {
 	}
 	
 	//Sort first, then remove duplicates
+	//O(n log n)
 	public static void removeDuplicatesInPlaceUnsorted(int[] arr)
 	{
 		//sort the unsorted array
@@ -53,6 +56,7 @@ public class RemoveDuplicates {
 				arr[j++] = arr[i];
 			}
 		}
+		//the last one
 		arr[j++] = arr[arr.length-1];
 		
 	}
@@ -67,7 +71,7 @@ public class RemoveDuplicates {
 		removeDuplicatesInPlace(arr2);
 		System.out.println(Arrays.toString(arr2));
 		
-		int[] arr3 = {1, 1, 2, 3, 3, 5, 6, 6, 7};
+		int[] arr3 = {1, 1, 2, 3, 3, 5, 6, 7, 7};
 		removeDuplicatesInPlaceUnsorted(arr3);
 		System.out.println(Arrays.toString(arr3));
 	}
