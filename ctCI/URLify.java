@@ -20,35 +20,33 @@ public class URLify {
 		//first count the spaces to find the total number of spaces required
 		//so that we can start from the last index 
 		int spaces = 0;
-		int index = 0;
-		for(int i = 0; i < truelength; i++)
+		for (int i = 0; i < truelength; i++)
 		{
-			if (str[i] == ' ')
+			if(str[i] == ' ')
 				spaces++;
 		}
 		
 		//index is the total number of spaces required
-		//spaces is * by 2 because for each space  
-		//we need 2 more spaces to insert %20
-		index = truelength + (spaces*2);
+		//spaces is * by 2 because for each space given in truelength, 
+		//we need 2 more spaces to insert %20 
+		int totalIndices = truelength + (spaces*2);
 		
-		for(int i = truelength-1; i >= 0; i--)
+		for(int i = truelength - 1; i >= 0 ; i--)
 		{
-			if(str[i] == ' ')
+			if(str[i] != ' ')
 			{
-				str[index-1] = '0';
-				str[index-2] = '2';
-				str[index-3] = '%';
-				index = index - 3;
+				str[totalIndices-1] = str[i];
+				totalIndices--;
 			}
 			else
 			{
-				str[index-1] = str[i];
-				index--;
+				str[totalIndices - 1] = '0';
+				str[totalIndices - 2] = '2';
+				str[totalIndices - 3] = '%';
+				totalIndices = totalIndices - 3;
 			}
 		}
 		System.out.println(str);
-		//return str.toString();
 	}
 	
 	public static void main(String[] args)
