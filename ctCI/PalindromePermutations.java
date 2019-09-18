@@ -1,4 +1,5 @@
 /**
+ *1.4
  * Palindrome Permutation: Given a string, write a function to check 
  * if it is a permutation of a palindrome.
 A palindrome is a word or phrase that is the same forwards and backwards. 
@@ -19,17 +20,17 @@ public class PalindromePermutations {
 	
 	public static boolean palPerm(String str)
 	{
-		HashMap <Character, Integer> hmap = new HashMap<>();
 		int countOdd = 0;
+		//str = str.trim();
+		int[] str1 = new int[26];
 		for(char c : str.toCharArray())
 		{
-			hmap.put(c, hmap.getOrDefault(c, 0)+1);
+			str1[c]++;	
 		}
-		for(char c: str.toCharArray())
+		for(int n : str1)
 		{
-			if(hmap.get(c) % 2 ==1)
-					countOdd++;
-					
+			if (str1[n] % 2 == 1)
+				countOdd++;
 		}
 		
 		return countOdd <= 1;
@@ -37,7 +38,7 @@ public class PalindromePermutations {
 	
 	public static void main(String[] args)
 	{
-		String str = "tact cat";
+		String str = "tactcccoa";
 		System.out.println(palPerm(str));
 	}
 }
