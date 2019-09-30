@@ -20,17 +20,18 @@ public class PalindromePermutations {
 	
 	public static boolean palPerm(String str)
 	{
+		HashMap <Character, Integer> hmap = new HashMap<>();
 		int countOdd = 0;
 		//str = str.trim();
-		int[] str1 = new int[26];
 		for(char c : str.toCharArray())
 		{
-			str1[c]++;	
+			hmap.put(c, hmap.getOrDefault(c, 0)+1);
 		}
-		for(int n : str1)
+		for(char c: hmap.keySet())
 		{
-			if (str1[n] % 2 == 1)
-				countOdd++;
+			if(hmap.get(c) % 2 == 1)
+					countOdd++;
+					
 		}
 		
 		return countOdd <= 1;
@@ -38,7 +39,7 @@ public class PalindromePermutations {
 	
 	public static void main(String[] args)
 	{
-		String str = "tactcccoa";
+		String str = "tact coa";
 		System.out.println(palPerm(str));
 	}
 }
